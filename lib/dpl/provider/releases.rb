@@ -116,7 +116,7 @@ module DPL
           next unless File.file?(file)
           existing_url = nil
           filename = Pathname.new(file).basename.to_s
-          api.release(release_url).rels[:assets].get.data.each do |existing_file|
+          api.release_assets(release_url).each do |existing_file|
             if existing_file.name == filename
               existing_url = existing_file.url
             end
