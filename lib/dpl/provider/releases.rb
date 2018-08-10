@@ -112,6 +112,7 @@ module DPL
           release_url = api.create_release(slug, get_tag, options.merge({:draft => true})).rels[:self].href
         end
 
+        log "Running DJP modified code for sure"
         files.each do |file|
           next unless File.file?(file)
           existing_url = nil
