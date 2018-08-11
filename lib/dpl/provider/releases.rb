@@ -117,7 +117,9 @@ module DPL
           next unless File.file?(file)
           existing_url = nil
           filename = Pathname.new(file).basename.to_s
+          log "Filename to find: #{filename.inspect}"
           api.release_assets(release_url).each do |existing_file|
+            log "Checking: #{existing_file.name.inspect}"
             if existing_file.name == filename
               existing_url = existing_file.url
             end
