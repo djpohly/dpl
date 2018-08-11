@@ -32,7 +32,8 @@ module DPL
         connection_options = {
           :request => {
             :timeout => 180,
-            :open_timeout => 180
+            :open_timeout => 180,
+            :auto_paginate => true
           }
         }
         if options[:user] and options[:password]
