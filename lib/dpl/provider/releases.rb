@@ -36,12 +36,10 @@ module DPL
           }
         }
         if options[:user] and options[:password]
-          @api ||= Octokit::Client.new(:login => options[:user], :password => options[:password], :connection_options => connection_options)
+          @api ||= Octokit::Client.new(:login => options[:user], :password => options[:password], :auto_paginate => true, :connection_options => connection_options)
         else
-          @api ||= Octokit::Client.new(:access_token => option(:api_key), :connection_options => connection_options)
+          @api ||= Octokit::Client.new(:access_token => option(:api_key), :auto_paginate => true, :connection_options => connection_options)
         end
-	@api.auto_paginate = true
-	@api
       end
 
       def slug
