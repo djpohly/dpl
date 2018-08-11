@@ -33,7 +33,6 @@ module DPL
           :request => {
             :timeout => 180,
             :open_timeout => 180,
-            :auto_paginate => true
           }
         }
         if options[:user] and options[:password]
@@ -41,6 +40,8 @@ module DPL
         else
           @api ||= Octokit::Client.new(:access_token => option(:api_key), :connection_options => connection_options)
         end
+	@api.auto_paginate = true
+	@api
       end
 
       def slug
